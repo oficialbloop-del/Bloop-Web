@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloop · Descarga la app de música sin anuncios</title>
+<meta name="description" content="Descarga gratis la última versión de Bloop para Android: busca cualquier canción, escúchala sin anuncios y descárgala para cuando no tengas señal.">
+<meta name="theme-color" content="#150A12">
+<link rel="icon" href="assets/icono.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bloop · Chao, anuncios.">
+<meta property="og:description" content="La app de música para Android sin anuncios. Descárgala gratis.">
+<!-- Cuando sepas la dirección de tu página, ponla completa aquí (p. ej. https://tuusuario.github.io/bloop/assets/compartir.jpg) para que WhatsApp e Instagram muestren la imagen -->
+<meta property="og:image" content="assets/compartir.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/bricolage.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+<canvas class="bubbles-bg" id="burbujas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip" href="#descargar">Ir a la descarga</a>
+
+<header class="top">
+  <a class="wordmark" href="#" aria-label="Bloop, inicio">
+    bloop<svg viewBox="0 0 100 100" aria-hidden="true"><path class="dot" d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg>
+  </a>
+  <a class="top-cta" href="#descargar">Descargar</a>
+</header>
+
+<main>
+  <!-- ============================================================ HERO -->
+  <section class="hero" id="descargar" aria-labelledby="titulo">
+    <svg class="bg-blob" data-side="right" style="--c:var(--bubblegum);--s:62vmax;--t:-8%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <div class="hero-copy">
+      <h1 id="titulo">
+        <span class="line">Chao,</span>
+        <span class="line struck">anuncios.
+          <svg class="scribble" viewBox="0 0 760 70" aria-hidden="true">
+            <path pathLength="1" d="M6 40 C 80 10, 140 62, 220 34 S 360 8, 430 40 S 560 66, 640 30 S 740 22, 754 34"/>
+          </svg>
+        </span>
+      </h1>
+      <p class="lede">Bloop es la app de música para Android que te deja buscar cualquier canción, escucharla sin interrupciones y guardarla para cuando no tengas señal. Gratis.</p>
+    </div>
+
+    <div class="hero-act">
+      <a class="creature-btn" id="descarga" href="https://zmwipaxignckzkjwbjhj.supabase.co/storage/v1/object/public/releases/bloop-latest.apk" download="Bloop.apk">
+        <svg class="creature" viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <linearGradient id="cuerpo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FF7DB4"/>
+              <stop offset=".55" stop-color="#FF5FA2"/>
+              <stop offset="1" stop-color="#B13ED1"/>
+            </linearGradient>
+            <radialGradient id="volumen" cx=".32" cy=".28" r=".9">
+              <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+              <stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="1" stop-color="#2a0716" stop-opacity=".35"/>
+            </radialGradient>
+            <radialGradient id="sombra"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+          </defs>
+          <ellipse class="shadow" cx="200" cy="352" rx="120" ry="18" fill="url(#sombra)"/>
+          <g class="jelly">
+            <path class="body" d="M200 60C290 58 345 120 343 200C341 284 286 340 198 338C112 336 57 282 59 198C61 116 114 62 200 60Z" fill="url(#cuerpo)"/>
+            <path class="body-light" d="M200 60C290 58 345 120 343 200C341 284 286 340 198 338C112 336 57 282 59 198C61 116 114 62 200 60Z" fill="url(#volumen)"/>
+            <ellipse cx="140" cy="125" rx="34" ry="22" fill="#fff" opacity=".35" transform="rotate(-25 140 125)"/>
+            <g class="face">
+              <g class="eyes">
+                <rect class="eye" x="148" y="168" width="24" height="48" rx="12"/>
+                <rect class="eye" x="228" y="168" width="24" height="48" rx="12"/>
+                <circle class="glint" cx="164" cy="180" r="5.5"/>
+                <circle class="glint" cx="244" cy="180" r="5.5"/>
+              </g>
+              <ellipse class="cheek" cx="128" cy="236" rx="20" ry="10"/>
+              <ellipse class="cheek" cx="272" cy="236" rx="20" ry="10"/>
+              <path class="mouth" d="M180 238 Q200 262 220 238"/>
+            </g>
+          </g>
+        </svg>
+        <span class="creature-label">Descargar Bloop</span>
+      </a>
+      <p class="release" id="version" aria-live="polite">La última versión, para Android 8 o superior.</p>
+      <p class="toast" id="aviso" role="status" hidden></p>
+
+      <div class="desktop-qr" id="qr" hidden>
+        <img src="assets/qr-descarga.svg" width="132" height="132" alt="Código QR para descargar Bloop en tu celular">
+        <p><strong>¿Estás en el computador?</strong> Apunta la cámara de tu celular Android a este código y Bloop se descarga ahí.</p>
+      </div>
+      <p class="ios-note" id="ios" hidden>Bloop todavía no está para iPhone. Si tienes un Android a la mano, abre esta página allí.</p>
+    </div>
+  </section>
+
+  <div class="band band-a" aria-hidden="true">
+    <div class="band-track"><span>Sin anuncios</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin cortes</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin señal, sin problema</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Letras en vivo</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Radio infinita</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Descargas para el bus</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Hecho en Medellín</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin anuncios</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin cortes</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin señal, sin problema</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Letras en vivo</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Radio infinita</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Descargas para el bus</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Hecho en Medellín</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg></div>
+  </div>
+
+  <!-- ============================================================ LO NUEVO -->
+  <section class="news" aria-labelledby="nuevo">
+    <svg class="mini" viewBox="0 0 400 400" aria-hidden="true">
+      <path d="M200 60C290 58 345 120 343 200C341 284 286 340 198 338C112 336 57 282 59 198C61 116 114 62 200 60Z" fill="url(#cuerpo)"/>
+      <rect x="148" y="170" width="24" height="44" rx="12" fill="#1B0A14"/>
+      <rect x="228" y="170" width="24" height="44" rx="12" fill="#1B0A14"/>
+      <ellipse cx="200" cy="246" rx="14" ry="18" fill="#1B0A14"/>
+    </svg>
+    <div class="bubble">
+      <h2 id="nuevo">Lo nuevo en <span id="nuevo-version">esta versión</span></h2>
+      <p id="notas">Mejoras y correcciones para que todo suene mejor.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ TRACKLIST -->
+  <section class="tracks" aria-labelledby="suena">
+    <svg class="bg-blob" data-side="left" style="--c:var(--grape);--s:56vmax;--t:10%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <div class="tracks-head">
+      <h2 id="suena">Lo que suena en Bloop</h2>
+      <p>Todo lo que esperas de una app de música, menos los anuncios. Lo marcado con Pro viene con un pase.</p>
+    </div>
+    <ul class="tracklist">
+      <li><span class="play" aria-hidden="true"></span><strong>Busca lo que sea</strong><span class="desc">Canciones, artistas, álbumes y playlists, con sugerencias mientras escribes.</span><span class="tag">Gratis</span></li>
+      <li><span class="play" aria-hidden="true"></span><strong>Sin interrupciones</strong><span class="desc">Sigue sonando con la pantalla apagada, con controles en la pantalla de bloqueo.</span><span class="tag">Gratis</span></li>
+      <li><span class="play" aria-hidden="true"></span><strong>Sin señal, sin problema</strong><span class="desc">Descarga tus canciones y escúchalas sin internet. Hasta 40 con el plan gratis.</span><span class="tag">Gratis</span></li>
+      <li><span class="play" aria-hidden="true"></span><strong>Letras en vivo</strong><span class="desc">La letra avanza con la canción. Toca una línea y salta a ese momento.</span><span class="tag">Gratis</span></li>
+      <li><span class="play" aria-hidden="true"></span><strong>Radio infinita</strong><span class="desc">Elige una canción y Bloop sigue con otras parecidas, sin que hagas nada.</span><span class="tag">Gratis</span></li>
+      <li><span class="play" aria-hidden="true"></span><strong>Tu Bloop</strong><span class="desc">Una criaturita que crece, cambia de color y se pone a bailar con lo que escuchas.</span><span class="tag">Gratis</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>Videos sin anuncios</strong><span class="desc">También los largos, en pantalla completa o en ventana flotante.</span><span class="tag">Pro</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>Descargas sin límite</strong><span class="desc">Lleva toda tu música contigo, sin tope de canciones.</span><span class="tag">Pro</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>La Nube</strong><span class="desc">Tus playlists, favoritas e historial a salvo aunque cambies de celular.</span><span class="tag">Pro</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>Tu Wrapped cada mes</strong><span class="desc">Tus artistas, canciones y horas escuchadas, listas para compartir.</span><span class="tag">Pro</span></li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ VIDEO -->
+  <section class="watch" aria-labelledby="mira">
+    <svg class="bg-blob" data-side="right" style="--c:var(--strawberry);--s:50vmax;--t:0%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <div class="watch-copy">
+      <h2 id="mira">46 segundos de Bloop</h2>
+      <p>Dale play con sonido: así se ve buscar, descargar, cantar con la letra y conocer a tu Bloop.</p>
+    </div>
+    <div class="phone">
+      <video src="assets/bloop-promo.mp4" poster="assets/bloop-promo-poster.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Video promocional de Bloop"></video>
+    </div>
+  </section>
+
+  <!-- ============================================================ INSTALAR -->
+  <section class="install" aria-labelledby="instala">
+    <svg class="bg-blob" data-side="left" style="--c:var(--lilac);--s:44vmax;--t:5%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <h2 id="instala">Instálala en un minuto</h2>
+    <ol class="steps">
+      <li>
+        <span class="num" aria-hidden="true">1</span>
+        <h3>Descarga el archivo</h3>
+        <p>Toca la criatura de arriba desde tu celular. Se baja un archivo llamado <span class="file" id="archivo">Bloop.apk</span>.</p>
+      </li>
+      <li>
+        <span class="num" aria-hidden="true">2</span>
+        <h3>Permite la instalación</h3>
+        <p>Ábrelo desde tus notificaciones o tus descargas. Si Android pregunta, activa “Permitir de esta fuente” para tu navegador.</p>
+      </li>
+      <li>
+        <span class="num" aria-hidden="true">3</span>
+        <h3>Dale play</h3>
+        <p>Abre Bloop, permite las notificaciones para ver los controles en la pantalla bloqueada y busca tu primera canción.</p>
+      </li>
+    </ol>
+    <p class="after">Después no tienes que volver aquí: cuando hay una versión nueva, Bloop te avisa y se actualiza desde la misma app.</p>
+  </section>
+
+  <!-- ============================================================ PRO -->
+  <section class="pro-sec" aria-labelledby="pro">
+    <svg class="bg-blob" data-side="right" style="--c:var(--mango);--s:48vmax;--t:10%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <div class="pro-copy">
+      <h2 id="pro">Bloop Pro, cuando tú quieras</h2>
+      <p>Compras un pase y listo. No se renueva solo: te avisamos 3 días antes, 1 día antes y el día que se acaba.</p>
+    </div>
+    <div class="tickets">
+      <article class="ticket t3"><p class="days"><b>3</b> días</p><p class="what">Para probar</p><p class="price"><small>$</small>1.999</p></article>
+      <article class="ticket t15"><p class="days"><b>15</b> días</p><p class="what">Medio mes</p><p class="price"><small>$</small>5.999</p></article>
+      <article class="ticket t30"><span class="sticker">¡El favorito!</span><p class="days"><b>30</b> días</p><p class="what">El que más rinde</p><p class="price"><small>$</small>9.999</p></article>
+    </div>
+    <p class="fine">Precios en pesos colombianos. Pagas con Nequi, PSE o tarjeta desde la app.</p>
+  </section>
+
+  <!-- ============================================================ PREGUNTAS -->
+  <section class="faq" aria-labelledby="preguntas">
+    <svg class="bg-blob" data-side="left" style="--c:var(--peach);--s:40vmax;--t:0%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <h2 id="preguntas">Preguntas que nos hacen</h2>
+    <details>
+      <summary>¿Bloop es gratis?</summary>
+      <p>Sí. Buscar, escuchar, crear playlists y descargar hasta 40 canciones no cuesta nada. Bloop Pro es opcional.</p>
+    </details>
+    <details>
+      <summary>¿Por qué no está en Play Store?</summary>
+      <p>Por ahora Bloop se instala directamente con su archivo APK, como muchas apps independientes. Por eso Android te pide permiso la primera vez.</p>
+    </details>
+    <details>
+      <summary>¿Es seguro instalar el APK?</summary>
+      <p>Descárgalo solo desde esta página. Cada versión va firmada con la misma llave, y Android no deja instalar encima una copia que no venga de nosotros.</p>
+      <p class="sha" id="sha" hidden></p>
+    </details>
+    <details>
+      <summary>¿Funciona en iPhone?</summary>
+      <p>Todavía no. Bloop está disponible solo para Android 8 o superior.</p>
+    </details>
+    <details>
+      <summary>¿Cómo me entero de las versiones nuevas?</summary>
+      <p>No tienes que hacer nada: al abrir Bloop, si hay una versión nueva, la app te la ofrece y se actualiza sola. Este botón también descarga siempre la más reciente.</p>
+    </details>
+  </section>
+  <div class="band band-b" aria-hidden="true">
+    <div class="band-track reverse"><span>Sin anuncios</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin cortes</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin señal, sin problema</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Letras en vivo</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Radio infinita</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Descargas para el bus</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Hecho en Medellín</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin anuncios</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin cortes</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin señal, sin problema</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Letras en vivo</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Radio infinita</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Descargas para el bus</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Hecho en Medellín</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg></div>
+  </div>
+
+</main>
+
+<footer class="end">
+  <svg class="bg-blob" data-side="center" style="--c:var(--bubblegum);--s:70vmax;--t:0%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
+    <p class="end-line">Ponle play.</p>
+  <a class="end-btn" href="#descargar">Descargar Bloop</a>
+  <p class="made">Hecho en Medellín, Colombia. © 2026 Bloop.</p>
+</footer>
+
+<script src="app.js?v=2" defer></script>
+</body>
+</html>
