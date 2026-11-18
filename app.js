@@ -209,3 +209,82 @@ function backgroundLoop(now) {
 }
 if (!quiet) requestAnimationFrame(backgroundLoop);
 else drawBubbles(0, 0);
+
+// ------------------------------------------------------------ sugerencias
+// Se guardan en la tabla public.sugerencias de Supabase. La llave publicable solo permite
+// enviarlas: leerlas es solo para las cuentas admin (panel "Admin Bloop").
+const SUPABASE = "https://zmwipaxignckzkjwbjhj.supabase.co";
+const PUBLIC_KEY = "sb_publishable_QFo32c-6x64xeCeUBNJgGQ_VGJREwKM";
+
+const dialog = $("sugerir");
+const form = $("sugerir-form");
+const ok = $("sugerir-ok");
+const err = $("sugerir-error");
+const sendBtn = $("sugerir-enviar");
+const mensaje = $("mensaje");
+
+function openSuggest() {
+  form.hidden = false;
+  ok.hidden = true;
+  err.hidden = true;
+  if (typeof dialog.showModal === "function") dialog.showModal();
+  else dialog.setAttribute("open", "");
+  setTimeout(() => mensaje.focus(), 60);
+}
+document.querySelectorAll("[data-sugerir]").forEach((b) => b.addEventListener("click", openSuggest));
+dialog.querySelectorAll("[data-cerrar]").forEach((b) => b.addEventListener("click", () => dialog.close()));
+dialog.addEventListener("click", (e) => { if (e.target === dialog) dialog.close(); }); // tocar fuera cierra
+dialog.querySelector("[data-otra]").addEventListener("click", () => { form.reset(); updateCount(); openSuggest(); });
+
+function updateCount() { $("cuenta").textContent = `${mensaje.value.length} / 2000`; }
+mensaje.addEventListener("input", updateCount);
+
+function showError(text) {
+  err.textContent = text;
+  err.hidden = false;
+}
+
+let lastSent = 0;
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  err.hidden = true;
+  const data = new FormData(form);
+  if (data.get("sitio")) { form.hidden = true; ok.hidden = false; return; } // bot: hacemos como si nada
+  const text = String(data.get("mensaje") || "").trim();
+  if (text.length < 3) { showError("Escribe tu sugerencia (al menos unas palabras) para poder enviarla."); mensaje.focus(); return; }
+  if (Date.now() - lastSent < 15000) { showError("Acabas de enviar una. Espera unos segundos para enviar otra."); return; }
+
+  const body = {
+    tipo: data.get("tipo") || "idea",
+    mensaje: text,
+    nombre: String(data.get("nombre") || "").trim() || null,
+    contacto: String(data.get("contacto") || "").trim() || null,
+    dispositivo: `${navigator.userAgent}`.slice(0, 280),
+  };
+  sendBtn.disabled = true;
+  sendBtn.textContent = "Enviando…";
+  try {
+    const res = await fetch(`${SUPABASE}/rest/v1/sugerencias`, {
+      method: "POST",
+      headers: { apikey: PUBLIC_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      let msg = "";
+      try { msg = (await res.json()).message || ""; } catch (_) {}
+      // los mensajes del servidor (límite, repetida) ya están en español
+      throw new Error(/^[A-ZÁÉÍÓÚ¡¿]/.test(msg) && !/violates|permission|relation/i.test(msg) ? msg : "No se pudo guardar tu sugerencia. Revisa tu conexión e intenta otra vez.");
+    }
+    lastSent = Date.now();
+    form.reset();
+    updateCount();
+    form.hidden = true;
+    ok.hidden = false;
+    bloopSound();
+  } catch (x) {
+    showError(x instanceof TypeError ? "No hay conexión. Revisa tu internet e intenta otra vez." : x.message);
+  } finally {
+    sendBtn.disabled = false;
+    sendBtn.textContent = "Enviar sugerencia";
+  }
+});

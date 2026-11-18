@@ -10,11 +10,15 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bloop · Chao, anuncios.">
 <meta property="og:description" content="La app de música para Android sin anuncios. Descárgala gratis.">
-<!-- Cuando sepas la dirección de tu página, ponla completa aquí (p. ej. https://tuusuario.github.io/bloop/assets/compartir.jpg) para que WhatsApp e Instagram muestren la imagen -->
-<meta property="og:image" content="assets/compartir.jpg">
+<meta property="og:url" content="https://oficialbloop-del.github.io/Bloop-Web/">
+<meta property="og:image" content="https://oficialbloop-del.github.io/Bloop-Web/assets/compartir.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1350">
+<link rel="canonical" href="https://oficialbloop-del.github.io/Bloop-Web/">
+<link rel="apple-touch-icon" href="assets/icono-180.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/bricolage.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 <canvas class="bubbles-bg" id="burbujas" aria-hidden="true"></canvas>
@@ -26,7 +30,10 @@
   <a class="wordmark" href="#" aria-label="Bloop, inicio">
     bloop<svg viewBox="0 0 100 100" aria-hidden="true"><path class="dot" d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg>
   </a>
-  <a class="top-cta" href="#descargar">Descargar</a>
+  <nav class="top-nav">
+    <button class="top-link" type="button" data-sugerir>Sugerir algo</button>
+    <a class="top-cta" href="#descargar">Descargar</a>
+  </nav>
 </header>
 
 <main>
@@ -208,6 +215,17 @@
       <p>No tienes que hacer nada: al abrir Bloop, si hay una versión nueva, la app te la ofrece y se actualiza sola. Este botón también descarga siempre la más reciente.</p>
     </details>
   </section>
+
+  <!-- ============================================================ SUGERENCIAS -->
+  <section class="ask" aria-labelledby="sugerir-titulo">
+    <div class="ask-card">
+      <div>
+        <h2 id="sugerir-titulo">¿Le falta algo a Bloop?</h2>
+        <p>Una idea, algo que falla o una canción que no encuentras. Cuéntanos: leemos todas las sugerencias.</p>
+      </div>
+      <button class="ask-btn" type="button" data-sugerir>Enviar una sugerencia</button>
+    </div>
+  </section>
   <div class="band band-b" aria-hidden="true">
     <div class="band-track reverse"><span>Sin anuncios</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin cortes</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin señal, sin problema</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Letras en vivo</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Radio infinita</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Descargas para el bus</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Hecho en Medellín</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin anuncios</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin cortes</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Sin señal, sin problema</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Letras en vivo</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Radio infinita</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Descargas para el bus</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg><span>Hecho en Medellín</span><svg viewBox="0 0 100 100"><path d="M50 10C72 9 91 27 90 50C89 74 71 91 49 90C26 89 9 72 10 49C11 27 28 11 50 10Z"/></svg></div>
   </div>
@@ -218,9 +236,76 @@
   <svg class="bg-blob" data-side="center" style="--c:var(--bubblegum);--s:70vmax;--t:0%" viewBox="0 0 400 400" aria-hidden="true"><path/></svg>
     <p class="end-line">Ponle play.</p>
   <a class="end-btn" href="#descargar">Descargar Bloop</a>
-  <p class="made">Hecho en Medellín, Colombia. © 2026 Bloop.</p>
+  <p class="made">Hecho en Medellín, Colombia. © 2026 Bloop. <button class="made-link" type="button" data-sugerir>Enviar una sugerencia</button></p>
 </footer>
 
-<script src="app.js?v=2" defer></script>
+<!-- ============================================================ FORMULARIO -->
+<dialog class="suggest" id="sugerir" aria-labelledby="sugerir-h">
+  <button class="close" type="button" data-cerrar aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <form id="sugerir-form" novalidate>
+    <div class="suggest-head">
+      <svg class="mini" viewBox="0 0 400 400" aria-hidden="true">
+        <path d="M200 60C290 58 345 120 343 200C341 284 286 340 198 338C112 336 57 282 59 198C61 116 114 62 200 60Z" fill="url(#cuerpo)"/>
+        <rect x="148" y="170" width="24" height="44" rx="12" fill="#1B0A14"/>
+        <rect x="228" y="170" width="24" height="44" rx="12" fill="#1B0A14"/>
+        <path d="M180 238 Q200 262 220 238" stroke="#1B0A14" stroke-width="9" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div>
+        <h2 id="sugerir-h">¿Qué le falta a Bloop?</h2>
+        <p>Lo que escribas aquí solo lo leemos nosotros.</p>
+      </div>
+    </div>
+
+    <fieldset class="kinds">
+      <legend>Es sobre…</legend>
+      <label><input type="radio" name="tipo" value="idea" checked><span>Una idea</span></label>
+      <label><input type="radio" name="tipo" value="problema"><span>Algo falla</span></label>
+      <label><input type="radio" name="tipo" value="otro"><span>Otra cosa</span></label>
+    </fieldset>
+
+    <label class="field">
+      <span>Tu sugerencia</span>
+      <textarea name="mensaje" id="mensaje" rows="5" maxlength="2000" required placeholder="Me encantaría que Bloop…"></textarea>
+      <small class="count" id="cuenta">0 / 2000</small>
+    </label>
+
+    <div class="row">
+      <label class="field">
+        <span>Tu nombre <em>(opcional)</em></span>
+        <input name="nombre" maxlength="80" autocomplete="given-name">
+      </label>
+      <label class="field">
+        <span>Correo o WhatsApp <em>(opcional)</em></span>
+        <input name="contacto" maxlength="120" autocomplete="email">
+      </label>
+    </div>
+    <p class="hint">Deja tu contacto solo si quieres que te respondamos.</p>
+    <!-- trampa para bots: las personas no ven este campo -->
+    <label class="hp" aria-hidden="true">Sitio web <input name="sitio" tabindex="-1" autocomplete="off"></label>
+
+    <p class="form-error" id="sugerir-error" role="alert" hidden></p>
+    <button class="send" type="submit" id="sugerir-enviar">Enviar sugerencia</button>
+  </form>
+
+  <div class="thanks" id="sugerir-ok" hidden>
+    <svg class="mini happy" viewBox="0 0 400 400" aria-hidden="true">
+      <path d="M200 60C290 58 345 120 343 200C341 284 286 340 198 338C112 336 57 282 59 198C61 116 114 62 200 60Z" fill="url(#cuerpo)"/>
+      <path d="M146 196 Q160 176 174 196 M226 196 Q240 176 254 196" stroke="#1B0A14" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path d="M176 232 Q200 270 224 232" stroke="#1B0A14" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <ellipse cx="128" cy="232" rx="20" ry="10" fill="#E2306F" opacity=".5"/>
+      <ellipse cx="272" cy="232" rx="20" ry="10" fill="#E2306F" opacity=".5"/>
+    </svg>
+    <h2>¡Llegó! Gracias.</h2>
+    <p>Tu sugerencia ya está guardada. Si dejaste tu contacto, puede que te escribamos.</p>
+    <div class="thanks-actions">
+      <button class="send" type="button" data-otra>Enviar otra</button>
+      <button class="ghost" type="button" data-cerrar>Cerrar</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="app.js?v=3" defer></script>
 </body>
 </html>
