@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/icono-180.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/bricolage.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.c1076395bedb61989b22.css" integrity="sha384-7x9hvAJX1R16m58YKw4wR4aNGaIej1cvc8G9bgRuCxwXsd71tlJSqcOloS/SdtJN">
 </head>
 <body>
 <canvas class="bubbles-bg" id="burbujas" aria-hidden="true"></canvas>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="hero-act">
-      <a class="creature-btn" id="descarga" href="https://zmwipaxignckzkjwbjhj.supabase.co/storage/v1/object/public/releases/bloop-latest.apk" download="Bloop.apk">
+      <button type="button" class="creature-btn" id="descarga" disabled>
         <svg class="creature" viewBox="0 0 400 400" aria-hidden="true">
           <defs>
             <linearGradient id="cuerpo" x1="0" y1="0" x2="1" y2="1">
@@ -87,13 +87,13 @@
           </g>
         </svg>
         <span class="creature-label">Descargar Bloop</span>
-      </a>
-      <p class="release" id="version" aria-live="polite">La última versión, para Android 8 o superior.</p>
+      </button>
+      <p class="release" id="version" aria-live="polite">Comprobando la versión oficial de Bloop…</p>
       <p class="toast" id="aviso" role="status" hidden></p>
 
       <div class="desktop-qr" id="qr" hidden>
         <img src="assets/qr-descarga.svg" width="132" height="132" alt="Código QR para descargar Bloop en tu celular">
-        <p><strong>¿Estás en el computador?</strong> Apunta la cámara de tu celular Android a este código y Bloop se descarga ahí.</p>
+        <p><strong>¿Estás en el computador?</strong> Escanea el código para abrir esta página y descargar Bloop en tu Android.</p>
       </div>
       <p class="ios-note" id="ios" hidden>Bloop todavía no está para iPhone. Si tienes un Android a la mano, abre esta página allí.</p>
     </div>
@@ -127,11 +127,13 @@
     <ul class="tracklist">
       <li><span class="play" aria-hidden="true"></span><strong>Busca lo que sea</strong><span class="desc">Canciones, artistas, álbumes y playlists, con sugerencias mientras escribes.</span><span class="tag">Gratis</span></li>
       <li><span class="play" aria-hidden="true"></span><strong>Sin interrupciones</strong><span class="desc">Sigue sonando con la pantalla apagada, con controles en la pantalla de bloqueo.</span><span class="tag">Gratis</span></li>
-      <li><span class="play" aria-hidden="true"></span><strong>Sin señal, sin problema</strong><span class="desc">Descarga tus canciones y escúchalas sin internet. Hasta 40 con el plan gratis.</span><span class="tag">Gratis</span></li>
-      <li><span class="play" aria-hidden="true"></span><strong>Letras en vivo</strong><span class="desc">La letra avanza con la canción. Toca una línea y salta a ese momento.</span><span class="tag">Gratis</span></li>
+      <li><span class="play" aria-hidden="true"></span><strong>Sin señal, sin problema</strong><span class="desc">Descarga tus canciones y escúchalas sin internet. Hasta 20 con el plan gratis.</span><span class="tag">Gratis</span></li>
       <li><span class="play" aria-hidden="true"></span><strong>Radio infinita</strong><span class="desc">Elige una canción y Bloop sigue con otras parecidas, sin que hagas nada.</span><span class="tag">Gratis</span></li>
       <li><span class="play" aria-hidden="true"></span><strong>Tu Bloop</strong><span class="desc">Una criaturita que crece, cambia de color y se pone a bailar con lo que escuchas.</span><span class="tag">Gratis</span></li>
       <li class="pro"><span class="play" aria-hidden="true"></span><strong>Videos sin anuncios</strong><span class="desc">También los largos, en pantalla completa o en ventana flotante.</span><span class="tag">Pro</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>Fiesta Bloop</strong><span class="desc">Crea una fiesta y tus amigos escuchan lo mismo que tú, al mismo tiempo. Ellos entran gratis con tu código.</span><span class="tag">Pro</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>Calidad máxima</strong><span class="desc">El mejor sonido que da YouTube, con el doble de detalle que el plan gratis.</span><span class="tag">Pro</span></li>
+      <li class="pro"><span class="play" aria-hidden="true"></span><strong>Letras en vivo</strong><span class="desc">La letra avanza con la canción. Toca una línea y salta a ese momento.</span><span class="tag">Pro</span></li>
       <li class="pro"><span class="play" aria-hidden="true"></span><strong>Descargas sin límite</strong><span class="desc">Lleva toda tu música contigo, sin tope de canciones.</span><span class="tag">Pro</span></li>
       <li class="pro"><span class="play" aria-hidden="true"></span><strong>La Nube</strong><span class="desc">Tus playlists, favoritas e historial a salvo aunque cambies de celular.</span><span class="tag">Pro</span></li>
       <li class="pro"><span class="play" aria-hidden="true"></span><strong>Tu Wrapped cada mes</strong><span class="desc">Tus artistas, canciones y horas escuchadas, listas para compartir.</span><span class="tag">Pro</span></li>
@@ -195,7 +197,7 @@
     <h2 id="preguntas">Preguntas que nos hacen</h2>
     <details>
       <summary>¿Bloop es gratis?</summary>
-      <p>Sí. Buscar, escuchar, crear playlists y descargar hasta 40 canciones no cuesta nada. Bloop Pro es opcional.</p>
+      <p>Sí. Buscar, escuchar, crear playlists y descargar hasta 20 canciones no cuesta nada. Bloop Pro es opcional.</p>
     </details>
     <details>
       <summary>¿Por qué no está en Play Store?</summary>
@@ -306,6 +308,6 @@
   </div>
 </dialog>
 
-<script src="app.js?v=3" defer></script>
+<script src="app.61e2df8f0b29e3fe06e5.js" integrity="sha384-Pg/flVnekL+tc19vbgMetVLxB04+JSaAfOhTIP1ulqe2+qXgmh2OJWkTlyGO1XrN" defer></script>
 </body>
 </html>
